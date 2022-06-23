@@ -1,17 +1,20 @@
 package DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class Dao {
-    private static Connection conn =null;
-    private final PreparedStatement pstmt = null;
-    private final ResultSet rs = null;
-    public static Connection getConn() {
-        conn=dbCon.getConnection();
-        return conn;
+
+    public static void initialProcess() throws SQLException {
+        MovieDao.deleteMovieList();
+        if (ReserveDao.reserveTableCheck())
+        {
+            ReserveDao.deleteReserveList();
+        }
+        else
+        {
+            System.out.println("reserve table is empty");
+        }
     }
 
 }

@@ -1,7 +1,7 @@
 package DAO;
 
+import DTO.DBDto;
 import Service.Menu;
-import com.mysql.cj.protocol.Resultset;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +15,7 @@ public class MovieDao {
         System.out.println("현재 상영중인 영화를 출력합니다.");
         PreparedStatement pstmt;
         String sql = "insert into movie(movie_name, ranks) select movie_name, ranks FROM box_office order by rand()LIMIT 9" ;
-        Connection conn = Dao.getConn();
+        Connection conn = DBDto.getConn();
         pstmt = conn.prepareStatement(sql);
         pstmt.executeUpdate();
 
@@ -25,7 +25,7 @@ public class MovieDao {
     public static void showMovieList(){
         try{
         String sql2 = "select movie_name, audience from movie";
-        Connection conn = Dao.getConn();
+        Connection conn = DBDto.getConn();
         PreparedStatement pstmt = conn.prepareStatement(sql2);
         ResultSet rs = pstmt.executeQuery(sql2);
         int i=1;
@@ -40,9 +40,10 @@ public class MovieDao {
     }
     //todo: 상영만료 영화 만들기
     public static void deleteMovieList() throws SQLException {
+        try{
         System.out.println("상영만료 영화를 제거 합니다.");
         PreparedStatement pstmt;
-        Connection conn = Dao.getConn();
+        Connection conn = DBDto.getConn();
         String sql = "truncate movie";
         pstmt = conn.prepareStatement(sql);
         pstmt.execute(sql);
@@ -51,7 +52,9 @@ public class MovieDao {
         if(!rs.next()) {
             System.out.println("삭제가 완료되었습니다.");
         }
-        Menu.menuSelect();
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -61,7 +64,7 @@ public class MovieDao {
         //영화 검색기능 진입 표시
         System.out.println("영화 검색기능입니다.");
         try {
-            Connection conn = Dao.getConn();
+            Connection conn = DBDto.getConn();
             String sql = "select * from box_office where " + movie_search + " like '%" + name + "%'";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs;
@@ -78,7 +81,7 @@ public class MovieDao {
         }
     }
     public static void top10() throws SQLException {
-        Connection conn = Dao.getConn();
+        Connection conn = DBDto.getConn();
         String sql = "SELECT movie_name FROM box_office order by ranks asc LIMIT 10";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();

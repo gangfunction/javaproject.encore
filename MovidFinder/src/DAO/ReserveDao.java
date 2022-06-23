@@ -1,16 +1,19 @@
 package DAO;
 
-import DTO.Dto;
+import DTO.*;
+import Service.Menu;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ReserveDao {
     public static void movieReserve1(int i) {
         try {
-            String sql = "insert into reserve(movie_name) select movie_name from movie where num =?";
-            Connection conn = Dao.getConn();
+            String sql = "insert into reservation(movie_name) select movie_name from movie where num =?";
+            Connection conn = DBDto.getConn();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            System.out.println("insert문에서 사용되는 인자는 " + i + "입니다.");
             pstmt.setInt(1, i);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -21,11 +24,11 @@ public class ReserveDao {
     public static void movieReserve2() {
         try{
             String sql= "update movie set audience = ? where num =?";
-            Connection conn = Dao.getConn();
+            Connection conn = DBDto.getConn();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            Dto.setAudience();
-            pstmt.setInt(1, Dto.getAudience());
-            pstmt.setInt(2,Dto.getReservation_cnt());
+            MovieDto.setAudience();
+            pstmt.setInt(1, MovieDto.getAudience());
+            pstmt.setInt(2,ResDto.getReservation_cnt());
             pstmt.executeUpdate();
         }catch (SQLException e) {
             throw new RuntimeException(e);
@@ -35,8 +38,8 @@ public class ReserveDao {
     //todo: 선택한 영화의 이름을 가져와서 box_office의 movie_name과 일치하는지 확인하고 일치하면 box_offce의 행을 출력한다.
     public static void movieReserve3() {
         try{
-            String sql= "select movie_name from movie where num='"+Dto.getReservation_cnt()+"'";
-            Connection conn = Dao.getConn();
+            String sql= "select movie_name from movie where num='"+ResDto.getReservation_cnt()+"'";
+            Connection conn = DBDto.getConn();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery(sql);
             while (rs.next()) {
@@ -51,7 +54,7 @@ public class ReserveDao {
     static void movieReserve4(String movie_name) {
         try{
             String sql= "select * from box_office where movie_name='"+movie_name+"'";
-            Connection conn = Dao.getConn();
+            Connection conn = DBDto.getConn();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery(sql);
             if (rs.next()) {
@@ -72,53 +75,43 @@ public class ReserveDao {
 
 
     public static void seatReserve(String i, String i1) throws SQLException {
-        Connection conn = Dao.getConn();
+        Connection conn = DBDto.getConn();
         //movieRerserve에서 영화 정보를 가져온다.
 
-        String sql = "update reserve set reserved=? ,seatnumber=?, id=? where num =? ";
+        String sql = "update reservation set reserved=? ,seatnumber=?, id=? where num =? ";
         PreparedStatement pstmt=conn.prepareStatement(sql);
         pstmt.setBoolean(1,true);
         pstmt.setString(2,i+i1);
-        pstmt.setString(3,Dto.getId());
-        pstmt.setInt(4,Dto.getReservation_cnt());
-        Dto.setReservation_cnt();
+        pstmt.setString(3, MemberDto.getId());
+        pstmt.setInt(4, ResDto.getReservation_cnt());
         pstmt.executeUpdate();
         System.out.println("좌석 예약되었습니다.");
-        seatCount();
-    }
-
-    //좌석 예약한 갯수 표시
-    private static void seatCount() throws SQLException {
-        Connection conn = Dao.getConn();
-        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        ResultSet rs = stmt.executeQuery("select reserved from reserve ");
-        int rowCount = rs.getRow();
-        System.out.println("예매된 좌석의 갯수는 " + rowCount + "개 입니다.");
     }
 
     public static void timeSet(int i) {
         try{
-            String sql= "update reserve set time=? where num=?";
-            Connection conn = Dao.getConn();
+            String sql= "update reservation set times=? where num=?;";
+            Connection conn = DBDto.getConn();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            if(i==1){
-                pstmt.setString(1, "10:00");
-            }else{
-                pstmt.setString(1, "14:00");
+            String Stime = null;
+            if (i==1){
+                Stime = "10:00";
             }
-            pstmt.setInt(2, Dto.getReservation_cnt());
+            if (i==2){
+                Stime = "14:00";
+            }
+            pstmt.setString(1, Stime);
+            pstmt.setInt(2, ResDto.getReservation_cnt());
             pstmt.executeUpdate();
-            System.out.println("예매 시간 업데이트 완료");
-            Dto.setReservation_cnt();
-            System.out.println("예약자 수 증가");
-        }catch (SQLException e) {
+
+         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    public static void showReserve(){
+        public static void showReserve(){
         try{
-            String sql= "select * from reserve where num='"+Dto.getReservation_cnt()+"'";
-            Connection conn = Dao.getConn();
+            String sql= "select * from reservation where num='"+ResDto.getReservation_cnt()+"'";
+            Connection conn = DBDto.getConn();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery(sql);
             while (rs.next()) {
@@ -130,13 +123,48 @@ public class ReserveDao {
     }
     public static void deleteReserveList(){
         try{
-            String sql= "truncate reserve";
-            Connection conn = Dao.getConn();
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.executeUpdate();
-            System.out.println("reserve table 내용삭제 완료");
+            reserveTableCheck();
+            Connection conn = DBDto.getConn();
+            PreparedStatement pstmt;
+            String sql= "truncate reservation";
+            pstmt= conn.prepareStatement(sql);
+            pstmt.execute(sql);
+            String sql2 = "select * from reservation";
+            ResultSet rs=pstmt.executeQuery(sql2);
+            if(!rs.next()) {
+                System.out.println("reservation table삭제가 완료되었습니다.");
+            };
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+    //reserve table이 존재하는지 확인한다.
+    public static boolean reserveTableCheck() {
+        try{
+            String sql= "select * from reservation";
+            Connection conn = DBDto.getConn();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery(sql);
+            if (rs.next()) {
+                return true;
+            }else{
+                System.out.println("reservation table이 존재하지 않습니다.");
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+    public static void createTableReserve() throws SQLException {
+        try{
+            String sql= "create table reservation(num int primary key auto_increment, movie_name varchar(20), reserved boolean, seatnumber varchar(20), times varchar(20), id varchar(20))";
+            Connection conn = DBDto.getConn();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.execute(sql);
+            System.out.println("reservation table이 생성되었습니다.");
+        }catch (SQLException e) {
+            System.out.println("reservation table이 이미 존재합니다.");
+            Menu.menuSelect();
+        }
+    };
 }

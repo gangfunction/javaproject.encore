@@ -18,24 +18,11 @@ public class dbCon{
 
             } catch (Exception e)
             {
-                System.out.println(e.toString());
-            }
-        }   return conn;
-    }
-    public static Connection getConnection(String url, String id, String pwd )
-    {
-        if(conn == null)
-        {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection(url, id, pwd);
-
-            } catch (Exception e)
-            {
                 System.out.println(e);
             }
         }   return conn;
     }
+
     public static void close()
     {
         if(conn != null)
@@ -50,5 +37,18 @@ public class dbCon{
             }
         }
         conn=null;
+    }
+
+    public static void auto_increment_init() {
+        try {
+            String sql = "alter table `review` auto_increment = 1";
+            PreparedStatement pstmt = getConnection().prepareStatement(sql);
+            String sql2 = "alter table `movie` auto_increment = 1";
+            PreparedStatement pstmt2 = getConnection().prepareStatement(sql2);
+            pstmt.executeUpdate();
+            pstmt2.executeUpdate();
+    } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

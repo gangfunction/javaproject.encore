@@ -1,11 +1,8 @@
 package Service;
 
 import DAO.MovieDao;
-import Service.Menu;
 
-import java.sql.SQLException;
 import java.util.Scanner;
-//todo: 영화목록 보여주기
 
 public class Movie {
 

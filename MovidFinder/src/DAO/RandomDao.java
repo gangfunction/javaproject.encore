@@ -1,5 +1,7 @@
 package DAO;
 
+import DTO.DBDto;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +11,7 @@ public class RandomDao {
 
     public static void countAll() throws SQLException {
         String sql = "SELECT COUNT(*) FROM box_office";
-        Connection conn = Dao.getConn();
+        Connection conn = DBDto.getConn();
         PreparedStatement pstmt = conn.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery(sql);
         while (rs.next()) {
@@ -22,7 +24,7 @@ public class RandomDao {
     //count의 갯수를 빼고 랜덤으로 10개의 영화를 가능하게 표시한다.
     public static void randomMovie() throws SQLException {
         System.out.println("현재 상영중인 영화들만 출력합니다.");
-        Connection conn = Dao.getConn();
+        Connection conn = DBDto.getConn();
         String sql = "SELECT movie_name FROM box_office order by rand()LIMIT 10";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery(sql);
