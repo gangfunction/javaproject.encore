@@ -131,14 +131,12 @@ public class ReserveDao {
             pstmt.execute(sql);
             String sql2 = "select * from reservation";
             ResultSet rs=pstmt.executeQuery(sql2);
-            if(!rs.next()) {
-                System.out.println("reservation table삭제가 완료되었습니다.");
-            };
+            rs.next();
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    //reserve table이 존재하는지 확인한다.
+    //reservation  table이 존재하는지 확인한다.
     public static boolean reserveTableCheck() {
         try{
             String sql= "select * from reservation";
@@ -147,8 +145,6 @@ public class ReserveDao {
             ResultSet rs = pstmt.executeQuery(sql);
             if (rs.next()) {
                 return true;
-            }else{
-                System.out.println("reservation table이 존재하지 않습니다.");
             }
         }catch (SQLException e) {
             throw new RuntimeException(e);
@@ -161,10 +157,8 @@ public class ReserveDao {
             Connection conn = DBDto.getConn();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.execute(sql);
-            System.out.println("reservation table이 생성되었습니다.");
         }catch (SQLException e) {
-            System.out.println("reservation table이 이미 존재합니다.");
             Menu.menuSelect();
         }
-    };
+    }
 }

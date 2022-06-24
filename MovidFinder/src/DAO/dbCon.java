@@ -9,7 +9,7 @@ public class dbCon{
         if(conn == null)
         {
             try {
-                String url = "jdbc:mysql://127.0.01:3306/mywork?serverTimezone=UTC";
+                String url = "jdbc:mysql://127.0.01:3306/finalwork?serverTimezone=UTC";
                 String id = "root";
                 String pwd = "1234";
 

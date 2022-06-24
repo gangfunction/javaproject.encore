@@ -2,6 +2,7 @@ package Service;
 
 import DAO.MovieDao;
 import DAO.ReserveDao;
+import DTO.MovieDto;
 import DTO.ResDto;
 
 import java.sql.SQLException;
@@ -25,6 +26,8 @@ public class Reservation {
         Scanner sc = new Scanner(System.in);
         System.out.println("선택하신 영화의 번호를 입력하세요");
         int movie_id = sc.nextInt();
+        //영화선택에 따라 MovieDto num에 저장하기
+        MovieDto.setNum(movie_id);
         System.out.println("영화를 선택하셨습니다. 선택하신 영화의 정보는 다음과 같습니다.");
         switch (movie_id) {
             case 1 -> bookingProcess(1);
@@ -47,6 +50,7 @@ public class Reservation {
         timeSelect();
         Reservation.seatSelect();
         System.out.println("예매가 완료되었습니다.");
+        ResDto.setReserved(true);
         Menu.menuSelect();
     }
     static void seatSelect() throws SQLException {
@@ -91,7 +95,6 @@ public class Reservation {
             ReserveDao.seatReserve(i, j);
             System.out.println("예매가 완료되었습니다.");
             ResDto.setReservation_cnt();
-            Menu.menuSelect();
         } else if (select.equals("n")) {
             //다른 좌석을 선택하는 메소드
             seatSelectRow(i);
@@ -115,13 +118,7 @@ public class Reservation {
         }
     }
 
-    static void showBooking() throws SQLException {
-        ReserveDao.showReserve();
-    }
-    void cancelBooking() throws SQLException {
-        System.out.println("예매취소");
 
-    }
 
 
 }

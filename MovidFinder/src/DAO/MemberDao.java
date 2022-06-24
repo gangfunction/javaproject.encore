@@ -1,6 +1,7 @@
 package DAO;
 
 import DTO.DBDto;
+import Service.Menu;
 
 import java.sql.*;
 import java.util.Objects;
@@ -30,6 +31,7 @@ public class MemberDao {
         pstmt.setString(2,pwd);
         pstmt.setBoolean(3,admin);
         pstmt.executeUpdate();
+        Menu.menuSelect();
     }
 
 

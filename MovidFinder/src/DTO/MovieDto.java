@@ -1,6 +1,7 @@
 package DTO;
 
 public class MovieDto {
+    private static int num;
     private String ranks;
     private String movie_name;
 
@@ -9,6 +10,14 @@ public class MovieDto {
 
 
     //getter and setter
+    public static int getNum() {
+        return num;
+    }
+
+    public static void setNum(int num) {
+        MovieDto.num = num;
+    }
+
     public String getRanks() {
         return ranks;
     }
@@ -32,6 +41,7 @@ public class MovieDto {
     public static void setAudience() {
         audience --;
     }
+    public static void canAudience(){ audience ++;}
 
 }
 

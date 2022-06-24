@@ -55,15 +55,17 @@ public class loginDao {
     public static boolean idCheck(String id) {
         try {
             Connection conn = DBDto.getConn();
-            String sql = "select * from member where id = ?";
+            String sql = "select * from member where id=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             ResultSet rs = pstmt.executeQuery();
-            return rs.next();
+            if(rs.next()) {
+                return false;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 
 

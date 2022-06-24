@@ -4,7 +4,7 @@ public class MemberDto {
     public static String id;
     static String pwd;
     private static boolean isin;
-    private boolean admin;
+    private static boolean admin;
 
     //getter and setter
     public static String getId() {
@@ -20,24 +20,24 @@ public class MemberDto {
     }
 
     public static void setPwd(String pwd) {
-        this.pwd = pwd;
+        MemberDto.pwd = pwd;
     }
 
     public static boolean getIsin() {
         return isin;
     }
     public static void setIsin(boolean isin) {
-        MemberDto.isin = true;
+        MemberDto.isin = isin;
     }
 
     public static void myPage() {
     }
 
-    public boolean isAdmin() {
+    public boolean getAdmin() {
         return admin;
     }
 
-    public static void setAdmin(boolean admin) {
-        this.admin = admin;
+    public static void setAdmin(boolean b) {
+        MemberDto.admin = b;
     }
 }

@@ -5,7 +5,7 @@ public class ResDto {
     private String id;
     private String times;
     private String seatnumber;
-    private boolean reserved;
+    private static boolean reserved = false;
 
     private static int reservation_cnt = 1;
 
@@ -42,12 +42,12 @@ public class ResDto {
         this.seatnumber = seatnumber;
     }
 
-    public boolean getReserved() {
+    public static boolean getReserved() {
         return reserved;
     }
 
-    public void setReserved(boolean reserved) {
-        this.reserved = reserved;
+    public static void setReserved(boolean reserved) {
+        ResDto.reserved = reserved;
     }
 
     public static int getReservation_cnt() {

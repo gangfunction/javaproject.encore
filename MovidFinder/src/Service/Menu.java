@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class Menu{
     static void menuPrint() {
         if (MemberDto.getIsin()) {
-            System.out.println("1. 로그아웃하기 2. 마이페이지 , 3. 영화정보 4. 예매하기 5. 예매취소 6. 종료");
+            System.out.println("1. 로그아웃 2. 마이페이지 3. 영화정보 4. 영화예매 5. 예매취소 6. 종료");
         }else{
-            System.out.println("1. 로그인하기 2. 회원가입 3. 영화정보 4. 종료");
+            System.out.println("1. 로그인 2. 회원가입 3. 영화정보 4. 종료");
         }
     }
 
@@ -22,8 +22,9 @@ public class Menu{
             System.out.println("아이디 : " + MemberDto.getId());
             System.out.println("-------------------------------");
         } else {
-            System.out.println("로그인이 필요합니다.");}
-        System.out.println("-------------------------------");
+            System.out.println("로그인이 필요합니다.");
+            System.out.println("-------------------------------");
+        }
         Scanner sc = new Scanner(System.in);
         menuPrint();
         int select = sc.nextInt();
@@ -36,11 +37,10 @@ public class Menu{
                     logout.logoutProcess();
                 }
             case 2:
-                if (!MemberDto.getIsin()) {
+                if (MemberDto.getIsin()) {
                     System.out.println("마이페이지");
                     MemberDto.myPage();
                 } else {
-                    System.out.println("회원가입");
                     ServiceMember.registerProcess();
                 }
             case 3:
@@ -54,9 +54,9 @@ public class Menu{
                     System.out.println("로그인이 필요합니다.");
                 }
             case 5:
-                System.out.println("영화예매내역");
+                System.out.println("예매취소");
                 if (MemberDto.getIsin()) {
-                    ReserveDao.showReserve();
+                    Rescan.RescanProcess();
                 } else {
                     System.out.println("로그인이 필요합니다.");
                 }
