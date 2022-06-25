@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class Dao {
 
     public static void initialProcess() throws SQLException {
-        MovieDao.deleteMovieList();
+        MovieProcess.deleteMovieList();
         if (ReserveDao.reserveTableCheck())
         {
             ReserveDao.deleteReserveList();

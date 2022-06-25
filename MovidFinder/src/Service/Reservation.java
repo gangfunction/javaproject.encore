@@ -1,14 +1,18 @@
 package Service;
 
-import DAO.MovieDao;
+import DAO.MovieProcess;
 import DAO.ReserveDao;
+import DAO.ReserveSequence;
 import DTO.MovieDto;
 import DTO.ResDto;
+import DTO.SeatDto;
+import VO.Seat;
+import VO.Seats;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import static DAO.MovieDao.insertMovieList;
+import static DAO.MovieProcess.insertMovieList;
 
 public class Reservation {
 
@@ -21,13 +25,16 @@ public class Reservation {
             callcnt++;
         }
         //영화목록 보여주기
-        MovieDao.showMovieList();
+        MovieProcess.showMovieList();
         //영화 선택
         Scanner sc = new Scanner(System.in);
         System.out.println("선택하신 영화의 번호를 입력하세요");
         int movie_id = sc.nextInt();
         //영화선택에 따라 MovieDto num에 저장하기
         MovieDto.setNum(movie_id);
+        //Movie Cnt를 실행한다.
+        Movie.MovieCnt(movie_id);
+        Movie.SeatGenCheck(movie_id);
         System.out.println("영화를 선택하셨습니다. 선택하신 영화의 정보는 다음과 같습니다.");
         switch (movie_id) {
             case 1 -> bookingProcess(1);
@@ -44,9 +51,10 @@ public class Reservation {
         //현재 접속자 목록 저장
     }
     static void bookingProcess(int i) throws SQLException {
-        ReserveDao.movieReserve1(i);
-        ReserveDao.movieReserve2();
-        ReserveDao.movieReserve3();
+        Seat.seatShowing();
+        ReserveSequence.movieReserve1(i);
+        ReserveSequence.movieReserve2();
+        ReserveSequence.movieReserve3();
         timeSelect();
         Reservation.seatSelect();
         System.out.println("예매가 완료되었습니다.");
@@ -55,6 +63,7 @@ public class Reservation {
     }
     static void seatSelect() throws SQLException {
         System.out.println("열을 선택하세요");
+        //열 정보 저장하기
         System.out.println("1. A열 2. B열 3. C열 4. D열 5. E열");
         Scanner sc = new Scanner(System.in);
         int columnSelect = sc.nextInt();
@@ -69,10 +78,13 @@ public class Reservation {
     }
     private static void seatSelectRow(String i) throws SQLException {
         System.out.println("순서를 선택하세요");
+        SeatDto.setColumn(i);
         System.out.println("1. 첫번째 2. 두번째 3. 셋번째 4. 네번째 5. 다섯번째 6.여섯번째");
         //switch 문으로 순서를 선택할수 있는 메소드를 만들어야한다.
         Scanner sc = new Scanner(System.in);
         String rowSelect = sc.next();
+        // 행 정보 저장하기
+        SeatDto.combi(i, rowSelect);
         switch (rowSelect) {
             case "1" -> seatResult(i, "1");
             case "2" -> seatResult(i, "2");
@@ -84,7 +96,11 @@ public class Reservation {
     }
 
     private static void seatResult(String i, String j) throws SQLException {
+        //선택한 좌석을 저장하는 메소드
+        SeatDto.combi(i, j);
         //선택환 좌석을 출력하는 메소드
+        //Todo: 여기에 현재 남은 좌석정보를 출력해줘야한다.
+
         System.out.println("선택한 좌석은 " + i + j + "입니다.");
         //선택한 좌석을 예매할 것인지 아니면 다른 좌석을 선택할 것인지 선택할수 있는 메소드
         System.out.println("예매하시겠습니까?(y/n)");
@@ -95,6 +111,10 @@ public class Reservation {
             ReserveDao.seatReserve(i, j);
             System.out.println("예매가 완료되었습니다.");
             ResDto.setReservation_cnt();
+            //예매좌석 정보 업데이트
+            Seats.SeatReplace(MovieDto.getNum(),SeatDto.getColumn(),SeatDto.getResult());
+
+
         } else if (select.equals("n")) {
             //다른 좌석을 선택하는 메소드
             seatSelectRow(i);

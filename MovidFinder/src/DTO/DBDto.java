@@ -14,8 +14,7 @@ public class DBDto {
         DBDto.conn = conn;
     }
 
-    public static Connection getClose(){
+    public static void getClose(){
         dbCon.close();
-        return conn;
 
-}}
+    }}

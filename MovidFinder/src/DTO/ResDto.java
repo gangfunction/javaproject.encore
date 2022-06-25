@@ -1,7 +1,7 @@
 package DTO;
 
 public class ResDto {
-    private String movie_name;
+    private static String movie_name;
     private String id;
     private String times;
     private String seatnumber;
@@ -9,14 +9,15 @@ public class ResDto {
 
     private static int reservation_cnt = 1;
 
+    public static void setMovieName(String movie_name) {
+        ResDto.movie_name = movie_name;
+    }
+
     //getter and setter
-    public String getMovie_name() {
+    public static String getMovie_name() {
         return movie_name;
     }
 
-    public void setMovie_name(String movie_name) {
-        this.movie_name = movie_name;
-    }
 
     public String getId() {
         return id;

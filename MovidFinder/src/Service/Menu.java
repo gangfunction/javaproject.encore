@@ -69,6 +69,8 @@ public class Menu{
                 System.out.println("종료");
                 DBDto.getClose();
                 break;
+            case 8:
+                System.out.println("실험");
 
             default:
                 System.out.println("잘못된 입력");
