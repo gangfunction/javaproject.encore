@@ -1,13 +1,13 @@
-import DAO.Dao;
-import DTO.DBDto;
-import Service.Menu;
+import dao.Dao;
+import dto.Dto;
+import service.Menu;
 
 import java.sql.SQLException;
 
 public class Main{
     public static void main(String[] args) throws SQLException {
         // 어서오세요 메세지 출력
-        DBDto.getConn();
+        Dto.getConn();
         Dao.initialProcess();
 
         System.out.println("어서오세요");
