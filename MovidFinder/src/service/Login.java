@@ -14,7 +14,7 @@ public class Login {
         Scanner sc = new Scanner(System.in);
         System.out.println("로그인 정보를 입력하세요");
         System.out.println("아이디 : ");
-        MemberDto.setId(sc.next());
+        String id=sc.next();
         System.out.println("비밀번호 : ");
         String pwd=sc.next();
         LoginDao.loginCheck(id, pwd);

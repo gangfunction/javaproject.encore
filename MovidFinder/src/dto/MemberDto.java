@@ -6,6 +6,14 @@ public class MemberDto {
     private static boolean isin;
     private static boolean admin;
 
+    MemberDto(String id, String pwd, boolean isin, boolean admin){
+        this.id=id;
+        this.pwd=pwd;
+        this.isin=isin;
+        this.admin=admin;
+    }
+
+
     //getter and setter
     public static String getId() {
         return id;

@@ -28,6 +28,7 @@ public class LoginDao {
             menuSelect();
         }
     }
+
     public static void loginSave(String id) throws SQLException {
         String sql = "select id, isin from member where isin=1";
         Connection conn = Dto.getConn();
