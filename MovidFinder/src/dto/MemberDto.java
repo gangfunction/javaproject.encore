@@ -2,15 +2,13 @@ package dto;
 
 public class MemberDto {
     public static String id;
-    static String pwd;
+    public static String pwd;
     private static boolean isin;
-    private static boolean admin;
 
-    MemberDto(String id, String pwd, boolean isin, boolean admin){
-        this.id=id;
-        this.pwd=pwd;
-        this.isin=isin;
-        this.admin=admin;
+    MemberDto(String id, String pwd, boolean isin){
+        MemberDto.id =id;
+        MemberDto.pwd =pwd;
+        MemberDto.isin =isin;
     }
 
 
@@ -39,6 +37,5 @@ public class MemberDto {
     }
 
     public static void setAdmin(boolean b) {
-        MemberDto.admin = b;
     }
 }

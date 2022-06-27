@@ -1,10 +1,8 @@
 package service;
 
-import dao.RescanDao;
-import dao.ReserveDao;
-import dto.Dto;
+import dao.createTableReserve;
 import dto.MemberDto;
-import vo.reviewMain;
+import utility.regProcess;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -36,40 +34,39 @@ public class Menu{
         switch (select) {
             case 0:{
                 System.out.println("게시판 접속");
-                reviewMain.menuprint();
+                menuPrint();
                 break;}
             case 1:
                 if (!MemberDto.getIsin()) {
-                    Login.loginProcess();
+                    new loginProcess();
                 } else {
-                    Login.logoutProcess();
+                    new logoutProcess();
                 }
             case 2:
                 if (MemberDto.getIsin()) {
-                    Login.logoutProcess();
+                    new logoutProcess();
                 } else {
-                    Member.registerProcess();
+                    regProcess.registerProcess();
                 }
             case 3:
-                Movie.selectMovie();
+                new selectMovie();
             case 4:
                 if (MemberDto.getIsin()) {
-                    Reserve.Reservation();
+                    new Reservation();
                 }
             case 5:
                 if (MemberDto.getIsin()) {
-                    RescanDao.RescanProcess();
+                    new RescanProcess();
                 }
             case 6:
-                ReserveDao.createTableReserve();
+                new createTableReserve();
                 Menu.menuSelect();
                 break;
             case 7:
-                Dto.getClose();
                 break;
             case 8:
                 System.out.println("실험");
-                reviewMain.menuprint();
+                menuPrint();
                 break;
 
             default:
@@ -77,4 +74,6 @@ public class Menu{
                 break;
         }
     }
+
+
 }
