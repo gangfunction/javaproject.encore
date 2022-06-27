@@ -42,11 +42,11 @@ public class Menu{
                 if (!MemberDto.getIsin()) {
                     Login.loginProcess();
                 } else {
-                    Logout.logoutProcess();
+                    Login.logoutProcess();
                 }
             case 2:
                 if (MemberDto.getIsin()) {
-                    Logout.logoutProcess();
+                    Login.logoutProcess();
                 } else {
                     Member.registerProcess();
                 }
@@ -55,8 +55,6 @@ public class Menu{
             case 4:
                 if (MemberDto.getIsin()) {
                     Reserve.Reservation();
-                } else {
-                    System.out.println("로그인이 필요합니다.");
                 }
             case 5:
                 if (MemberDto.getIsin()) {

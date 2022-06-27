@@ -1,6 +1,7 @@
 package service;
 
 import dao.LoginDao;
+import dao.LogoutDao;
 import dto.Dto;
 import dto.MemberDto;
 
@@ -25,4 +26,11 @@ public class Login {
             Menu.menuSelect();
         }
     }// 로그인 처리
+
+    static void logoutProcess() throws SQLException {
+        System.out.println("로그아웃 처리");
+        MemberDto.setIsin(false);
+        LogoutDao.logoutUpdate();
+        Menu.menuSelect();
+    }
 }
