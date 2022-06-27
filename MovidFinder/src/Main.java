@@ -1,16 +1,29 @@
+<<<<<<< Updated upstream
 import java.lang.reflect.Member;
 import java.sql.*;
 import java.util.Scanner;
+=======
+import dao.movie.initialProcess;
+import service.serviceMenu;
+
+import java.sql.SQLException;
+>>>>>>> Stashed changes
 
 public class Main{
     public static void main(String[] args) throws SQLException {
         // 어서오세요 메세지 출력
+<<<<<<< Updated upstream
+=======
+        dto.dto.dbCon();
+        new initialProcess();
+
+>>>>>>> Stashed changes
         System.out.println("어서오세요");
 
         //jdbc를 연결한다.
         dbCon.Con();
         //메뉴선택
-        Menu.menuSelect();
+        new serviceMenu();
     }
 
 }
