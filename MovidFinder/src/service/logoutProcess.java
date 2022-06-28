@@ -1,15 +1,21 @@
 package service;
 
-import dao.logoutUpdate;
-import dto.MemberDto;
+import dao.login.loginMain;
+import dto.memberDto;
 
 import java.sql.SQLException;
 
 public class logoutProcess {
     logoutProcess() throws SQLException {
         System.out.println("로그아웃 처리");
-        MemberDto.setIsin(false);
-        new logoutUpdate();
-        Menu.menuSelect();
+        if(memberDto.getIsin()){
+            memberDto.setIsin(false);
+            memberDto.setLoginCheck(4);
+            new loginMain();
+        }else{
+            System.out.println("로그인이 되어있지 않습니다.");
+        }
+        new serviceMenu();
+
     }
 }

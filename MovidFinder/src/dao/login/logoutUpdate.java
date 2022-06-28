@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import static dto.memberDto.id;
 
 public class logoutUpdate {
-    public logoutUpdate() throws SQLException {
+    protected logoutUpdate() throws SQLException {
         String sql= "update member set isin=? where id=?";
         Connection conn = dto.getConn();
         PreparedStatement pstmt = conn.prepareStatement(sql);

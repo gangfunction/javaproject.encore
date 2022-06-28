@@ -1,25 +1,25 @@
-package dao;
+package service;
 
-import dto.Dto;
-import utility.TableCheck;
+import dto.dto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class deleteReserveList{
-    public deleteReserveList() {
+public class movieDeleteList{
+    public movieDeleteList() {
         try {
-            TableCheck.reserveTableCheck();
-            Connection conn = Dto.getConn();
             PreparedStatement pstmt;
-            String sql = "truncate reservation";
+            Connection conn = dto.getConn();
+            String sql = "truncate movie";
             pstmt = conn.prepareStatement(sql);
             pstmt.execute(sql);
-            String sql2 = "select * from reservation";
+            String sql2 = "select * from movie";
             ResultSet rs = pstmt.executeQuery(sql2);
-            rs.next();
+            if (!rs.next()) {
+                System.out.println();
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

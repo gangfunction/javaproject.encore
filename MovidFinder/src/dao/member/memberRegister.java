@@ -8,14 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class memberRegister {
-    public memberRegister(String id, String pwd, Boolean admin) throws SQLException {
+    public memberRegister() throws SQLException {
         PreparedStatement pstmt;
         Connection conn = dto.getConn();
         String sql = "insert into member(id,pwd,isin,admin) values(?,?,false,?)";
         pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1,id);
-        pstmt.setString(2,pwd);
-        pstmt.setBoolean(3,admin);
+        pstmt.setString(1, dto.getId());
+        pstmt.setString(2,dto.getPwd());
+        pstmt.setBoolean(3,dto.getAdmin());
         pstmt.executeUpdate();
         new serviceMenu();
     }

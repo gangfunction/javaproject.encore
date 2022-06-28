@@ -6,8 +6,6 @@ import dao.member.memberRegister;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import static dto.memberDto.id;
-
 public class regProcess {
     public regProcess() throws SQLException {
         Scanner sc = new Scanner(System.in);
@@ -28,21 +26,21 @@ public class regProcess {
                 System.out.println("관리자 코드 입력");
                 int admin_code = sc.nextInt();
                 if (admin_code == 1234) {
-                    new memberRegister(id, pwd, true);
+                    new memberRegister();
                 } else {
                     System.out.println("관리자 코드가 일치하지 않습니다.");
                     System.out.println("1. 다시 시도하시겠습니까? (0: 아니오, 1: 다시 시도)");
                     int select = sc.nextInt();
                     if (select == 0) {
                         System.out.println("일반회원으로 가입을 진행하겠습니다.");
-                        new memberRegister(id, pwd, false);
+                        new memberRegister();
                     } else if (select == 1) {
                         System.out.println("회원가입을 다시 진행하겠습니다.");
                         new regProcess();
                     }
                 }
             } else {
-                new memberRegister(id, pwd, false);
+                new memberRegister();
             }
         } else {
             System.out.println("아이디가 중복됩니다.");

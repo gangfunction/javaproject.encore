@@ -54,4 +54,12 @@ public class memberDto {
     public static void setAdmin(boolean b) {
         memberDto.admin=b;
     }
+
+    static int LoginCheck = 0;
+    public static int getLoginCheck() {
+        return LoginCheck;
+    }
+    public static void setLoginCheck(int LoginCheck) {
+        memberDto.LoginCheck = LoginCheck;
+    }
 }

@@ -1,4 +1,4 @@
-package service.reservation;
+package service;
 
 import dao.movie.movieInsertList;
 import dao.movie.movieList;
@@ -7,10 +7,13 @@ import dto.resDto;
 
 import java.util.Scanner;
 
-public class movieSelect extends movieInsertList {
+public class movieSelect {
     movieSelect() {
-        super();
-        if (resDto.getCallcnt() == 0) new movieInsertList();
+        if (resDto.getCallcnt() == 0)
+        {
+            new movieInsertList();
+            resDto.setCallcnt(1);
+        }
         new movieList();
         Scanner sc = new Scanner(System.in);
         System.out.println("선택하신 영화의 번호를 입력하세요");
