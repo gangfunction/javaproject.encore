@@ -1,7 +1,7 @@
 package service;
 
-import dao.admin.adminMenuPrint;
-import dao.login.loginCheck;
+import dao.loginCheck;
+import dto.Dto;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class loginProcess {
     //로그인 처리 db
     loginProcess() throws SQLException {
+        Dto.getConn();
         Scanner sc = new Scanner(System.in);
         System.out.println("로그인 정보를 입력하세요");
         System.out.println("아이디 : ");
@@ -18,7 +19,7 @@ public class loginProcess {
         String pwd = sc.next();
         new loginCheck(id, pwd);
         if (adCheck(id, pwd)) {
-            new serviceMenu();
+            Menu.menuSelect();
         } else {
             System.out.println("관리자 로그인 성공");
             new adminMenuPrint();

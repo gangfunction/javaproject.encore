@@ -1,6 +1,6 @@
 package utility;
 
-import dto.dto;
+import dto.Dto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ public class TableCheck {
     public static boolean reserveTableCheck() {
         try {
             String sql = "select * from reservation";
-            Connection conn = dto.getConn();
+            Connection conn = Dto.getConn();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery(sql);
             if (rs.next()) {

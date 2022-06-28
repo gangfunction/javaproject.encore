@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MovidFinder/MovidFinder.iml" filepath="$PROJECT_DIR$/MovidFinder/MovidFinder.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/javaproject.encore.iml" filepath="$PROJECT_DIR$/.idea/javaproject.encore.iml" />
     </modules>
   </component>

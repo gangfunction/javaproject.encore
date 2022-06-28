@@ -1,6 +1,6 @@
 package service;
 
-import dao.movie.movieSearch;
+import dao.movieSearch;
 
 import java.util.Scanner;
 
@@ -14,11 +14,13 @@ public class selectMovie {
         switch (movie_search) {
             case 1 -> {
                 System.out.println("영화 이름을 입력하세요");
-                new movieSearch();
+                String name = sc.next();
+                new movieSearch("movie_name", name);
             }
             case 2 -> {
                 System.out.println("영화 장르를 입력하세요");
-                new movieSearch();
+                String name = sc.next();
+                new movieSearch("genre", name);
             }
         }
     }

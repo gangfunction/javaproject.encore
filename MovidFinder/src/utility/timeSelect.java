@@ -1,7 +1,7 @@
 package utility;
 
-import dao.reserve.timeSet;
-import dto.resDto;
+import dao.timeSet;
+import dto.ResDto;
 
 import java.util.Scanner;
 
@@ -13,10 +13,10 @@ public class timeSelect {
         System.out.println("2. 오후 2시");
         int select = sc.nextInt();
         if (select == 1) {
-            resDto.setTime("10:00");
+            ResDto.setTime("10:00");
             new timeSet();
         } else if (select == 2) {
-            resDto.setTime("14:00");
+            ResDto.setTime("14:00");
             new timeSet();
         } else {
             System.out.println("잘못 입력하셨습니다.");
