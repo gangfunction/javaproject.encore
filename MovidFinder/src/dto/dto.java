@@ -17,7 +17,7 @@ public class dto {
         dto.connect = connect;
     }
 
-    // jdbc 드라이버로 mysql finalwork 데이터베이스에 연결
+    // jdbc 드라이버로 mysql final work 데이터베이스에 연결
 
     public static void dbCon() {
         try {
@@ -48,9 +48,7 @@ public class dto {
     public static void setPwd(String next) {
         memberDto.setPwd(next);
     }
-    public static boolean getDoubleCheck(){
-        return memberDto.getDoubleCheck();
-    }
+
     public static void setDoubleCheck(boolean next){
         memberDto.setDoubleCheck(next);
     }

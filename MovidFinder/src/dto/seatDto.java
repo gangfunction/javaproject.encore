@@ -2,6 +2,16 @@ package dto;
 
 public class seatDto {
 
+    private static int seatPointer;
+
+    public static int getSeatPointer() {
+        return seatPointer;
+    }
+
+    public static void setSeatPointer(int seatPointer) {
+        seatDto.seatPointer = seatPointer;
+    }
+
     private static String Row="";
     static String Column="" ;
     static String Result="";
@@ -38,7 +48,7 @@ public class seatDto {
         return Result;
     }
 
-    public static void combi(String i, String j){
+    public static void setResult(String i, String j){
         seatDto.Result=i+j;
     }
 

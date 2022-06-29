@@ -9,14 +9,14 @@ import java.sql.SQLException;
 
 public class memberRegister {
     public memberRegister() throws SQLException {
-        PreparedStatement pstmt;
+        PreparedStatement stmt;
         Connection conn = dto.getConn();
-        String sql = "insert into member(id,pwd,isin,admin) values(?,?,false,?)";
-        pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, dto.getId());
-        pstmt.setString(2,dto.getPwd());
-        pstmt.setBoolean(3,dto.getAdmin());
-        pstmt.executeUpdate();
+        String sql = "insert into member(id,pwd,isin,admin) values(?,?,true,?)";
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, dto.getId());
+        stmt.setString(2,dto.getPwd());
+        stmt.setBoolean(3,dto.getAdmin());
+        stmt.executeUpdate();
         new serviceMenu();
     }
 }

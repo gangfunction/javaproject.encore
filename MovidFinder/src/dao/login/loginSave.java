@@ -12,8 +12,8 @@ public class loginSave {
     protected loginSave() throws SQLException {
         String sql = "select id, isin from member where isin=1";
         Connection conn = dto.getConn();
-        PreparedStatement pstmt = conn.prepareStatement(sql);
-        ResultSet rs = pstmt.executeQuery();
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             if (rs.getString("id").equals(dto.getId())) {
                 memberDto.setId(rs.getString("id"));

@@ -12,8 +12,8 @@ public class movieInsertList {
             System.out.println("현재 상영중인 영화를 출력합니다.");
             String sql = "insert into movie(movie_name, ranks) select movie_name, ranks FROM box_office order by rand()LIMIT 9";
             Connection conn = dto.getConn();
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.executeUpdate();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

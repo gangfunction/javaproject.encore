@@ -1,6 +1,8 @@
 package service;
 
-import dao.review.reviewMain;
+import dao.movie.movieSearch;
+import dao.reserve.resProcess;
+import dao.reviewPage.reviewMain;
 import dto.memberDto;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -20,7 +22,7 @@ public class serviceMenu {
         }
 
         if (memberDto.getIsin()) {
-            System.out.println("1.로그아웃  2. 로그아웃  3. 영화검색  4. 영화예매  5. 예매취소 5. 종료");
+            System.out.println("1.로그아웃 2. 마이페이지 3. 영화검색  4. 영화예매  5. 예매취소 5. 종료");
         } else {
             System.out.println("1. 로그인 2. 회원가입 3. 영화검색 4. 종료");
         }
@@ -28,8 +30,8 @@ public class serviceMenu {
         int select = sc.nextInt();
         switch (select) {
             case 1 -> new accessProcess();
-            case 2 -> new regProcess();
-            case 3 -> new movieSelect();
+            case 2 -> new PageorRegister();
+            case 3 -> new movieSearch();
             case 4 -> new resProcess();
             case 5 -> new resCanProcess();
             case 6 -> reviewMain.main();

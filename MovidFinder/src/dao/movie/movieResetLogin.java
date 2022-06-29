@@ -9,8 +9,8 @@ public class movieResetLogin {
     protected movieResetLogin() {
         try{
         String sql = "update member set isin = 0";
-        PreparedStatement pstmt = dto.getConn().prepareStatement(sql);
-        pstmt.executeUpdate();
+        PreparedStatement stmt = dto.getConn().prepareStatement(sql);
+        stmt.executeUpdate();
         }
         catch(SQLException e){
             throw new RuntimeException(e);

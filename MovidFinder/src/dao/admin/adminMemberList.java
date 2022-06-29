@@ -10,11 +10,12 @@ public class adminMemberList {
     protected adminMemberList() {
         try{
             String sql = "select * from member ";
-            PreparedStatement pstmt = dto.getConn().prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
+            PreparedStatement stmt = dto.getConn().prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
-                System.out.println(rs.getString("id") + " " + rs.getString("name") + " " + rs.getString("pwd") + " " + rs.getString("email") + " " + rs.getString("phone") + " " + rs.getString("admin"));
+                System.out.println(rs.getString ("num")+" "+rs.getString("id")  + " " + rs.getString("pwd") +"  "+rs.getString("isin")+"  "+ rs.getString("admin"));
             }
+            System.out.println("----------------------------------------------------");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

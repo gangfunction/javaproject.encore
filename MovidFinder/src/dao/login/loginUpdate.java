@@ -12,10 +12,10 @@ public class loginUpdate{
     protected loginUpdate() throws SQLException {
         String sql = "update member set isin=? where id=?";
         Connection conn = dto.getConn();
-        PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setBoolean(1, true);
-        pstmt.setString(2, id);
-        pstmt.executeUpdate();
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setBoolean(1, true);
+        stmt.setString(2, id);
+        stmt.executeUpdate();
     }
 
 

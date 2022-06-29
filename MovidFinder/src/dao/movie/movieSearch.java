@@ -18,9 +18,9 @@ public class movieSearch {
         try {
             Connection conn = dto.dto.getConn();
             String sql = "select * from box_office where movie_name "+ "like '%"  + name+ "%'";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs;
-            rs = pstmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
             if (rs.next()) {
                 System.out.println("----------------------------------------------------");
             }

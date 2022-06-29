@@ -10,13 +10,13 @@ import java.sql.SQLException;
 public class movieDeleteList{
     public movieDeleteList() {
         try {
-            PreparedStatement pstmt;
+            PreparedStatement stmt;
             Connection conn = dto.getConn();
             String sql = "truncate movie";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.execute(sql);
+            stmt = conn.prepareStatement(sql);
+            stmt.execute();
             String sql2 = "select * from movie";
-            ResultSet rs = pstmt.executeQuery(sql2);
+            ResultSet rs = stmt.executeQuery(sql2);
             if (!rs.next()) {
                 System.out.println();
             }

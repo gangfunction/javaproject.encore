@@ -10,14 +10,15 @@ public class adCheck {
     adCheck(){
         try{
             String sql= "select admin from member where id = ? and pwd=?";
-            PreparedStatement pstmt = dto.dto.getConn().prepareStatement(sql);
-            pstmt.setString(1, memberDto.getId() );
-            pstmt.setString(2, memberDto.getPwd() );
-            ResultSet rs = pstmt.executeQuery();
-            if(rs.next()){
+            PreparedStatement stmt = dto.dto.getConn().prepareStatement(sql);
+            stmt.setString(1, memberDto.getId() );
+            stmt.setString(2, memberDto.getPwd() );
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next() && rs.getInt("admin") == 1){
+                System.out.println("관리자입니다.");
                 memberDto.setAdmin(true);
-            }
-            else {
+            }else{
+                System.out.println("관리자가 아닙니다.");
                 memberDto.setAdmin(false);
             }
 

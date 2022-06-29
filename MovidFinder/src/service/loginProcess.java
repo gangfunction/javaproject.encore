@@ -19,18 +19,19 @@ public class loginProcess {
         System.out.println("비밀번호 : ");
         memberDto.setPwd(sc.next());
         memberDto.setLoginCheck(1);
-        new loginMain();
+        loginMain.main();
         new adCheck();
         memberDto.setIsin(true);
         if (memberDto.getAdmin()) {
             System.out.println("관리자 로그인 성공");
             adminMain.main();
-            } else {
-                System.out.println("일반 회원 로그인");
-                new serviceMain();
-            }
         }
-
+        else
+        {
+            System.out.println("일반 회원 로그인");
+            new serviceMenu();
+        }
+    }
 
 }// 로그인 처리
 

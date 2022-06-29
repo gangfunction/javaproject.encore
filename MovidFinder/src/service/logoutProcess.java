@@ -11,7 +11,7 @@ public class logoutProcess {
         if(memberDto.getIsin()){
             memberDto.setIsin(false);
             memberDto.setLoginCheck(4);
-            new loginMain();
+            loginMain.main();
         }else{
             System.out.println("로그인이 되어있지 않습니다.");
         }

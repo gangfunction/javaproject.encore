@@ -16,7 +16,7 @@ public class memberDto {
         memberDto.doubleCheck = doubleCheck;
     }
 
-    memberDto(String id, String pwd, boolean isin, boolean admin) {
+    memberDto(String id, String pwd, boolean isin) {
         memberDto.id =id;
         memberDto.pwd =pwd;
         memberDto.isin =isin;

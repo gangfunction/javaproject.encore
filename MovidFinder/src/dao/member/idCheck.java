@@ -15,11 +15,11 @@ public class idCheck {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             if (rs.next()) {
-                dto.setDoubleCheck(true);
+                dto.setDoubleCheck(false);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        dto.setDoubleCheck(false);
+        dto.setDoubleCheck(true);
     }
 }

@@ -16,11 +16,11 @@ public class movieWatchedSelect {
         int num = sc.nextInt();
         Connection conn = dto.getConn();
         String sql = "select * from reservation where num = ?";
-        PreparedStatement pstmt;
+        PreparedStatement stmt;
         try {
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, num);
-            ResultSet rs = pstmt.executeQuery();
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, num);
+            ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 movieDto.setMovieName(rs.getString("movie_name"));
             }

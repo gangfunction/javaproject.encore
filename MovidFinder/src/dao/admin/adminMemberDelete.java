@@ -5,15 +5,21 @@ import dto.dto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Scanner;
 
-import static dto.memberDto.id;
-
-public class adminMemberDelete {
+public class adminMemberDelete extends adminMemberList {
     protected adminMemberDelete() throws SQLException {
+        new adminMemberList();
+        System.out.println("삭제하실 회원의 아이디를 입력하세요.");
+        Scanner sc = new Scanner(System.in);
+        String id = sc.nextLine();
         Connection conn = dto.getConn();
         String sql = "delete from member where id = ?";
-        PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, id);
-        pstmt.executeUpdate();
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, id);
+        stmt.executeUpdate();
+        System.out.println("회원이 삭제되었습니다.");
+        new adminAutoMReset();
+        new adminMenu();
     }
 }

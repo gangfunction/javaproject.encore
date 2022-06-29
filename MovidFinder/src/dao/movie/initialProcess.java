@@ -1,6 +1,5 @@
 package dao.movie;
 
-import dao.reserve.deleteReserveList;
 import service.movieDeleteList;
 
 public class initialProcess {
@@ -8,5 +7,7 @@ public class initialProcess {
         new movieDeleteList();
         new deleteReserveList();
         new movieResetLogin();
+        new movieInsertList();
+
     }
 }

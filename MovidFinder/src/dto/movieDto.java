@@ -2,15 +2,8 @@ package dto;
 
 public class movieDto {
 
-    private static int daoPointer;
 
-    public static int getDaoPointer() {
-        return daoPointer;
-    }
 
-    public static void setDaoPointer(int daoPointer) {
-        movieDto.daoPointer = daoPointer;
-    }
 
     private static int pointer;
 
@@ -24,9 +17,8 @@ public class movieDto {
         return useAudience;
     }
 
-    static int reservation_cnt = 0;
+    static int reservation = 0;
 
-    //todo movie namelist를 배열로 설정한다.
 
 
     //getter and setter
@@ -58,12 +50,12 @@ public class movieDto {
     }
 
 
-    public static int getReservation_cnt() {
-        return reservation_cnt;
+    public static int getReservation() {
+        return reservation;
     }
 
-    public static void setReservation_cnt() {
-        reservation_cnt ++;
+    public static void setReservation() {
+        reservation ++;
     }
 
     public static void canAudience() {

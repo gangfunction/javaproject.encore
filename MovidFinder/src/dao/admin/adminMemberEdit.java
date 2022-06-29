@@ -11,10 +11,10 @@ public class adminMemberEdit {
     protected adminMemberEdit() {
         try{
             String sql = "select * from member ";
-            PreparedStatement pstmt = dto.getConn().prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
+            PreparedStatement stmt = dto.getConn().prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
-                System.out.println(rs.getString("id") + " " + rs.getString("name") + " " + rs.getString("pwd") + " " + rs.getString("email") + " " + rs.getString("phone") + " " + rs.getString("admin"));
+                System.out.println(rs.getString("id") + " " + rs.getString("pwd") + " " + rs.getString("admin"));
             }// 업데이트 할 이름의 아이디를 입력받는다.
             System.out.println("수정할 행의 아이디를 입력하세요.");
             Scanner sc = new Scanner(System.in);
@@ -24,29 +24,30 @@ public class adminMemberEdit {
             System.out.println("1. 비밀번호");
             System.out.println("2. 어드민 여부");
             String select = sc.nextLine();
-            switch(select){
-                case "1":
+            switch (select) {
+                case "1" -> {
                     System.out.println("변경할 비밀번호를 입력하세요.");
                     String pwd = sc.nextLine();
                     String sql2 = "update member set pwd=? where id=?";
-                    PreparedStatement pstmt2 = dto.getConn().prepareStatement(sql2);
-                    pstmt2.setString(1, pwd);
-                    pstmt2.setString(2, id);
-                    pstmt2.executeUpdate();
-                    break;
-                case "2":
+                    PreparedStatement stmt2 = dto.getConn().prepareStatement(sql2);
+                    stmt2.setString(1, pwd);
+                    stmt2.setString(2, id);
+                    stmt2.executeUpdate();
+                    System.out.println("비밀번호가 변경되었습니다.");
+                }
+                case "2" -> {
                     System.out.println("변경할 어드민 여부를 입력하세요.");
                     boolean admin = sc.nextBoolean();
                     String sql3 = "update member set admin=? where id=?";
-                    PreparedStatement pstmt3 = dto.getConn().prepareStatement(sql3);
-                    pstmt3.setBoolean(1, admin);
-                    pstmt3.setString(2, id);
-                    pstmt3.executeUpdate();
-                    break;
-                default:
-                    System.out.println("잘못 입력하셨습니다.");
-                    break;
+                    PreparedStatement stmt3 = dto.getConn().prepareStatement(sql3);
+                    stmt3.setBoolean(1, admin);
+                    stmt3.setString(2, id);
+                    stmt3.executeUpdate();
+                    System.out.println("어드민 여부가 변경되었습니다.");
+                }
+                default -> System.out.println("잘못 입력하셨습니다.");
             }
+            new adminMenu();
             } catch (SQLException e) {
             throw new RuntimeException(e);
         }

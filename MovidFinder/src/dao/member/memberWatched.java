@@ -13,11 +13,11 @@ public class memberWatched {
         System.out.println("회원님이 시청하셨던 영화는 다음과 같습니다.");
         Connection conn = dto.getConn();
         String sql = "select * from reservation where id = ?";
-        PreparedStatement pstmt;
+        PreparedStatement stmt;
         try {
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, memberDto.getId());
-            ResultSet rs = pstmt.executeQuery();
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, memberDto.getId());
+            ResultSet rs = stmt.executeQuery();
             if (!rs.next()) {
                 System.out.println("시청하신 영화가 없으시군요? 프로그램을 종료하겠습니다.");
                 System.exit(0);
