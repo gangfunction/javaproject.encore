@@ -1,12 +1,7 @@
 package dto;
 
 public class movieDto {
-
-
-
-
     private static int pointer;
-
 
     public static String movie_name;
     public static boolean reserved = false;
@@ -18,8 +13,15 @@ public class movieDto {
     }
 
     static int reservation = 0;
-
-
+    static int audience1 = 30;
+    static int audience2 = 30;
+    static int audience3 = 30;
+    static int audience4 = 30;
+    static int audience5 = 30;
+    static int audience6 = 30;
+    static int audience7 = 30;
+    static int audience8 = 30;
+    static int audience9 = 30;
 
     //getter and setter
     public static int getPointer() {
@@ -61,5 +63,68 @@ public class movieDto {
     public static void canAudience() {
         useAudience ++;
     }
+
+    public static void setAudience() { useAudience --;}
+
+    public static void setForAudience(int audience) {
+        useAudience = audience;
+    }
+    //getter and setter
+    public static int getAudience1() {
+        return audience1;
+    }
+    public static void setAudience1(int audience) {
+        movieDto.audience1 = audience;
+    }
+    public static int getAudience2() {
+        return audience2;
+    }
+    public static void setAudience2(int audience) {
+        movieDto.audience2 = audience;
+    }
+    public static int getAudience3() {
+        return audience3;
+    }
+    public static void setAudience3(int audience) {
+        movieDto.audience3 = audience;
+    }
+    public static int getAudience4() {
+        return audience4;
+    }
+    public static void setAudience4(int audience) {
+        movieDto.audience4 = audience;
+    }
+    public static int getAudience5() {
+        return audience5;
+    }
+    public static void setAudience5(int audience) {
+        movieDto.audience5 = audience;
+    }
+    public static int getAudience6() {
+        return audience6;
+    }
+    public static void setAudience6(int audience) {
+        movieDto.audience6 = audience;
+    }
+    public static int getAudience7() {
+        return audience7;
+    }
+    public static void setAudience7(int audience) {
+        movieDto.audience7 = audience;
+    }
+    public static int getAudience8() {
+        return audience8;
+    }
+    public static void setAudience8(int audience) {
+        movieDto.audience8 = audience;
+    }
+    public static int getAudience9() {
+        return audience9;
+    }
+    public static void setAudience9(int audience) {
+        movieDto.audience9 = audience;
+    }
+
+
 }
 

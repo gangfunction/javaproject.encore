@@ -13,12 +13,13 @@ public class seatReserve {
     protected seatReserve() {
         try {
             Connection conn = dto.getConn();
-            String sql = "update reservation set reserved=? ,seatnumber=?, id=? where num =? ";
+            String sql = "update reservation set reserved=? ,seatnumber=?, id=?, pointer=? where num =? ";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setBoolean(1, true);
             stmt.setString(2, seatDto.getResult());
             stmt.setString(3, memberDto.getId());
-            stmt.setInt(4, movieDto.getReservation());
+            stmt.setInt(4, movieDto.getPointer());
+            stmt.setInt(5, movieDto.getReservation());
             stmt.executeUpdate();
             movieDto.setReserved(true);
         } catch (SQLException e) {

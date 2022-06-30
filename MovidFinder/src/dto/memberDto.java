@@ -6,24 +6,6 @@ public class memberDto {
     private static boolean isin;
     private  static boolean admin;
 
-    private static boolean doubleCheck = false;
-
-    public static boolean getDoubleCheck() {
-        return doubleCheck;
-    }
-
-    public static void setDoubleCheck(boolean doubleCheck) {
-        memberDto.doubleCheck = doubleCheck;
-    }
-
-    memberDto(String id, String pwd, boolean isin) {
-        memberDto.id =id;
-        memberDto.pwd =pwd;
-        memberDto.isin =isin;
-        memberDto.admin =false;
-    }
-
-
     //getter and setter
     public static String getId() {
         return id;
@@ -55,11 +37,4 @@ public class memberDto {
         memberDto.admin=b;
     }
 
-    static int LoginCheck = 0;
-    public static int getLoginCheck() {
-        return LoginCheck;
-    }
-    public static void setLoginCheck(int LoginCheck) {
-        memberDto.LoginCheck = LoginCheck;
-    }
 }

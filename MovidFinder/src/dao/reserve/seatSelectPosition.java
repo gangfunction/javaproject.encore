@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class seatSelectPosition {
     seatSelectPosition() {
         System.out.println("열을 선택하세요");
+        new seatShowing();
         System.out.println("1. A열 2. B열 3. C열 4. D열 5. E열");
         Scanner sc = new Scanner(System.in);
         String columnSelect = sc.next();
@@ -27,7 +28,7 @@ public class seatSelectPosition {
         sc = new Scanner(System.in);
         String rowSelect = sc.next();
         seatDto.setRow(rowSelect);
-        seatDto.setResult(seatDto.getColumn(), seatDto.getRow());
+        seatDto.setResultsum(seatDto.getColumn(), seatDto.getRow());
 
     }
 }

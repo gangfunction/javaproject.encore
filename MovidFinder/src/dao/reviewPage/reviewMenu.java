@@ -1,5 +1,7 @@
 package dao.reviewPage;
 
+import dao.member.memberWatched;
+import dao.member.memberWatchedSelect;
 import service.serviceMenu;
 
 import java.sql.SQLException;
@@ -16,11 +18,15 @@ public class reviewMenu {
         switch (num) {
             case 1 -> {
                 System.out.println("게시판 출력");
-                new reviewSelect();
+                new reviewShow();
                 new reviewMenu();
             }
             case 2 -> {
                 System.out.println("게시판 입력");
+                new memberWatched();
+                new memberWatchedSelect();
+                new reviewInput();
+                new reviewMenu();
                 new reviewInsert();
                 new reviewMenu();
             }

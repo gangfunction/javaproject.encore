@@ -20,8 +20,6 @@ public class loginCheck  {
         ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
             System.out.println("로그인 성공");
-            new loginUpdate();
-            new loginSave();
         } else {
             System.out.println("로그인 실패");
             new serviceMenu();

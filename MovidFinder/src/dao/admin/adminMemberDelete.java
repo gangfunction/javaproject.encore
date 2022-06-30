@@ -19,7 +19,7 @@ public class adminMemberDelete extends adminMemberList {
         stmt.setString(1, id);
         stmt.executeUpdate();
         System.out.println("회원이 삭제되었습니다.");
-        new adminAutoMReset();
+        new AutoMReset();
         new adminMenu();
     }
 }

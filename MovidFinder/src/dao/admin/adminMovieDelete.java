@@ -1,7 +1,5 @@
 package dao.admin;
 
-import dao.admin.adminAutoBReset;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,7 +17,7 @@ public class adminMovieDelete {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.executeUpdate();
             System.out.println("삭제가 완료되었습니다.");
-            new adminAutoBReset();
+            new AutoBReset();
     } catch (SQLException e) {
             throw new RuntimeException(e);
         }

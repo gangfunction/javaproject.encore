@@ -10,12 +10,7 @@ public class Chair implements Seats {
     public Chair(String movie_name) {
         this.movie_name = movie_name;
     }
-    public void setMovie(String movie_name){
-        this.movie_name = movie_name;
-    }
-    public String getMovie(){
-        return movie_name;
-    }
+
     public String[] getArr() {
         return arr;
     }

@@ -1,15 +1,15 @@
 package dao.reserve;
 
-import dao.admin.adminMovieList;
 import dto.dto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class movieList {
-    protected movieList() {
+    movieList() {
         try {
             String sql2 = "select movie_name, audience from movie";
             Connection conn = dto.getConn();
@@ -24,6 +24,10 @@ public class movieList {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("보실 영화의 번호를 입력하세요");
+        int movie_id = sc.nextInt();
+        dto.setPointer(movie_id);
 
     }
 }

@@ -49,14 +49,15 @@ public class dto {
         memberDto.setPwd(next);
     }
 
-    public static void setDoubleCheck(boolean next){
-        memberDto.setDoubleCheck(next);
-    }
-
     public static boolean getAdmin() {
         return memberDto.getAdmin();
     }
     public static void setAdmin(boolean next) {
         memberDto.setAdmin(next);
     }
+
+    public static void setPointer(int next) {
+        movieDto.setPointer(next);
+    }
+
 }

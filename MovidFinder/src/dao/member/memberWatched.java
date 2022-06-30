@@ -22,6 +22,7 @@ public class memberWatched {
                 System.out.println("시청하신 영화가 없으시군요? 프로그램을 종료하겠습니다.");
                 System.exit(0);
             }
+            rs=stmt.executeQuery();
             while (rs.next()) {
                 System.out.println(rs.getString("num") + " 번째 예약하셨던 " + rs.getString("movie_name") + " 영화입니다.");
             }

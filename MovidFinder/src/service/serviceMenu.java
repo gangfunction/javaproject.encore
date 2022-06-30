@@ -1,6 +1,8 @@
 package service;
 
+import dao.login.accessProcess;
 import dao.movie.movieSearch;
+import dao.rescan.resCanProcess;
 import dao.reserve.resProcess;
 import dao.reviewPage.reviewMain;
 import dto.memberDto;
@@ -22,9 +24,9 @@ public class serviceMenu {
         }
 
         if (memberDto.getIsin()) {
-            System.out.println("1.로그아웃 2. 마이페이지 3. 영화검색  4. 영화예매  5. 예매취소 5. 종료");
+            System.out.println("1.로그아웃 2. 마이페이지 3. 영화검색  4. 영화예매  5. 예매취소 6. 리뷰페이지 7.종료");
         } else {
-            System.out.println("1. 로그인 2. 회원가입 3. 영화검색 4. 종료");
+            System.out.println("1. 로그인 2. 회원가입 3. 영화검색 7. 종료");
         }
         Scanner sc = new Scanner(System.in);
         int select = sc.nextInt();
@@ -35,8 +37,11 @@ public class serviceMenu {
             case 4 -> new resProcess();
             case 5 -> new resCanProcess();
             case 6 -> reviewMain.main();
-            case 7 -> new serviceMenu();
-            default -> System.out.println("잘못된 입력");
+            case 7 -> System.exit(0);
+            default -> {
+                System.out.println("잘못된 입력");
+                new serviceMenu();
+            }
         }
     }
 

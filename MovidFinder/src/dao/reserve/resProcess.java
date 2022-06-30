@@ -11,11 +11,12 @@ public class resProcess {
         if (memberDto.getIsin()) {
             try {
                 new movieList();
-                new movieReserve();
                 new seatSelectPosition();
+                new seatExist();
                 new seatResult();
+                new movieReserve();
                 new seatReserve();
-                new resGenerator();
+                seatFactory.seatAction();
                 System.out.println("좌석 예약되었습니다.");
                 new serviceMenu();
             } catch (SQLException e) {

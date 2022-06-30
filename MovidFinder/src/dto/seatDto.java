@@ -2,28 +2,9 @@ package dto;
 
 public class seatDto {
 
-    private static int seatPointer;
-
-    public static int getSeatPointer() {
-        return seatPointer;
-    }
-
-    public static void setSeatPointer(int seatPointer) {
-        seatDto.seatPointer = seatPointer;
-    }
-
     private static String Row="";
     static String Column="" ;
     static String Result="";
-
-    static String CanSeat="";
-
-    public static String getCanSeat() {
-        return CanSeat;
-    }
-    public static void setCanSeat(String canSeat) {
-        seatDto.CanSeat = canSeat;
-    }
 
 
     //getter and setter
@@ -48,8 +29,10 @@ public class seatDto {
         return Result;
     }
 
-    public static void setResult(String i, String j){
-        seatDto.Result=i+j;
+    public static void setResultsum(String i, String j) {
+        seatDto.Result = i + j;
     }
-
+    public static void setResult(String seatnumber) {
+        seatDto.Result = seatnumber;
+    }
 }
