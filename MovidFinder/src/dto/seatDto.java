@@ -6,6 +6,15 @@ public class seatDto {
     static String Column="" ;
     static String Result="";
 
+    static String CanSeat="";
+
+    public static String getCanSeat() {
+        return CanSeat;
+    }
+    public static void setCanSeat(String canSeat) {
+        seatDto.CanSeat = canSeat;
+    }
+
 
     //getter and setter
 
@@ -29,10 +38,8 @@ public class seatDto {
         return Result;
     }
 
-    public static void setResultsum(String i, String j) {
-        seatDto.Result = i + j;
+    public static void combi(String i, String j){
+        seatDto.Result=i+j;
     }
-    public static void setResult(String seatnumber) {
-        seatDto.Result = seatnumber;
-    }
+
 }
