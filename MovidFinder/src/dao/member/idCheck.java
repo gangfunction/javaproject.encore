@@ -1,7 +1,7 @@
 package dao.member;
 
 import dao.register.regProcess;
-import dto.dto;
+import dto.dTO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,7 +12,7 @@ public class idCheck {
     public static void action(String id) {
         String sql = "select * from member where id = '" + id + "'";
         try {
-            Connection conn = dto.getConn();
+            Connection conn = dTO.getConn();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             if (rs.next()) {

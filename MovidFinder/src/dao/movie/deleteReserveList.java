@@ -1,6 +1,6 @@
 package dao.movie;
 
-import dto.dto;
+import dto.dTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class deleteReserveList{
     public deleteReserveList() {
         try {
-            Connection conn = dto.getConn();
+            Connection conn = dTO.getConn();
             PreparedStatement stmt;
             String sql = "truncate reservation";
             stmt = conn.prepareStatement(sql);

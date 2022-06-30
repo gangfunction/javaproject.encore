@@ -1,13 +1,13 @@
 package dao.reserve;
 
-import dto.movieDto;
+import dto.movieDTO;
 
 import static dao.reserve.seatFactory.*;
 
 public class seatShowing  {
     public seatShowing() {
         System.out.println("현재 좌석의 상태입니다.");
-        switch(movieDto.getPointer()){
+        switch(movieDTO.getPointer()){
             case 1 -> movie1.showing();
             case 2 -> movie2.showing();
             case 3 -> movie3.showing();

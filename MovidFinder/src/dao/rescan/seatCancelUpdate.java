@@ -1,6 +1,6 @@
 package dao.rescan;
 
-import dto.dto;
+import dto.dTO;
 import dto.seatDto;
 
 import java.sql.Connection;
@@ -12,7 +12,7 @@ public class seatCancelUpdate {
     public seatCancelUpdate() {
         String sql = "update reservation set reserved = ? where seatnumber=?";
         try{
-            Connection conn = dto.getConn();
+            Connection conn = dTO.getConn();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, 0);
             stmt.setString(2, seatDto.getResult());

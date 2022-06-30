@@ -1,6 +1,6 @@
 package dao.movie;
 
-import dto.dto;
+import dto.dTO;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ public class movieResetLogin {
     protected movieResetLogin() {
         try{
         String sql = "update member set isin = 0";
-        PreparedStatement stmt = dto.getConn().prepareStatement(sql);
+        PreparedStatement stmt = dTO.getConn().prepareStatement(sql);
         stmt.executeUpdate();
         }
         catch(SQLException e){

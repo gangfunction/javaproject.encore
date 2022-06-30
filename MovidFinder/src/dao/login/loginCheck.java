@@ -1,6 +1,6 @@
 package dao.login;
 
-import dto.dto;
+import dto.dTO;
 import service.serviceMenu;
 
 import java.sql.Connection;
@@ -13,10 +13,10 @@ public class loginCheck  {
     protected loginCheck() throws SQLException {
         //member 테이블에서 아이디와 비밀번호가 일치하는지 확인
         String sql = "select * from member where id=? and pwd=?";
-        Connection conn = dto.getConn();
+        Connection conn = dTO.getConn();
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, dto.getId());
-        stmt.setString(2, dto.getPwd());
+        stmt.setString(1, dTO.getId());
+        stmt.setString(2, dTO.getPwd());
         ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
             System.out.println("로그인 성공");

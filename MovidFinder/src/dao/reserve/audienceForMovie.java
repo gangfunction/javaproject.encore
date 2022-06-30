@@ -1,19 +1,19 @@
 package dao.reserve;
 
-import dto.movieDto;
+import dto.movieDTO;
 
 public class audienceForMovie {
     public audienceForMovie() {
-        switch (movieDto.getPointer()) {
-            case 1 -> movieDto.setForAudience(movieDto.getAudience1());
-            case 2 -> movieDto.setForAudience(movieDto.getAudience2());
-            case 3 -> movieDto.setForAudience(movieDto.getAudience3());
-            case 4 -> movieDto.setForAudience(movieDto.getAudience4());
-            case 5 -> movieDto.setForAudience(movieDto.getAudience5());
-            case 6 -> movieDto.setForAudience(movieDto.getAudience6());
-            case 7 -> movieDto.setForAudience(movieDto.getAudience7());
-            case 8 -> movieDto.setForAudience(movieDto.getAudience8());
-            case 9 -> movieDto.setForAudience(movieDto.getAudience9());
+        switch (movieDTO.getPointer()) {
+            case 1 -> movieDTO.setForAudience(movieDTO.getAudience1());
+            case 2 -> movieDTO.setForAudience(movieDTO.getAudience2());
+            case 3 -> movieDTO.setForAudience(movieDTO.getAudience3());
+            case 4 -> movieDTO.setForAudience(movieDTO.getAudience4());
+            case 5 -> movieDTO.setForAudience(movieDTO.getAudience5());
+            case 6 -> movieDTO.setForAudience(movieDTO.getAudience6());
+            case 7 -> movieDTO.setForAudience(movieDTO.getAudience7());
+            case 8 -> movieDTO.setForAudience(movieDTO.getAudience8());
+            case 9 -> movieDTO.setForAudience(movieDTO.getAudience9());
             default -> System.out.println("잘못된 입력");
         }
     }

@@ -1,8 +1,8 @@
 package dao.rescan;
 
-import dto.dto;
-import dto.memberDto;
-import dto.movieDto;
+import dto.dTO;
+import dto.memberDTO;
+import dto.movieDTO;
 import service.serviceMenu;
 
 import java.sql.Connection;
@@ -16,11 +16,11 @@ public class resShow {
         //예약자의 아이디를 입력받아서,  표시해준다.
         String sql = "select * from reservation where id = ? and reserved = 1";
         try{
-        Connection conn = dto.getConn();
+        Connection conn = dTO.getConn();
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, memberDto.getId());
+        stmt.setString(1, memberDTO.getId());
         ResultSet rs = stmt.executeQuery();
-        if (movieDto.getReserved()) {
+        if (movieDTO.getReserved()) {
             System.out.println("예약하신 영화의 시간과 이름은 다음과 같습니다.");
         } else {
             System.out.println("예약된 영화가 없습니다.");

@@ -1,6 +1,6 @@
 package dao.login;
 
-import dto.memberDto;
+import dto.memberDTO;
 
 import java.util.Scanner;
 
@@ -9,8 +9,8 @@ public class loginInput {
         Scanner sc = new Scanner(System.in);
         System.out.println("로그인 정보를 입력하세요");
         System.out.println("아이디 : ");
-        memberDto.setId(sc.next());
+        memberDTO.setId(sc.next());
         System.out.println("비밀번호 : ");
-        memberDto.setPwd(sc.next());
+        memberDTO.setPwd(sc.next());
     }
 }

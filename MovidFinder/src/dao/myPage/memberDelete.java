@@ -2,7 +2,8 @@ package dao.myPage;
 
 
 import dao.admin.AutoMReset;
-import dto.memberDto;
+import dto.dTO;
+import dto.memberDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,9 +14,9 @@ public class memberDelete {
         super();
         String sql = "delete from member where id=?";
         try{
-            Connection conn = dto.dto.getConn();
+            Connection conn = dTO.getConn();
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, memberDto.getId());
+            stmt.setString(1, memberDTO.getId());
             stmt.executeUpdate();
             System.out.println("회원탈퇴가 완료되었습니다.");
             new AutoMReset();

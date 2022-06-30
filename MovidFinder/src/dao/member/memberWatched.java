@@ -1,7 +1,7 @@
 package dao.member;
 
-import dto.dto;
-import dto.memberDto;
+import dto.dTO;
+import dto.memberDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,12 +11,12 @@ import java.sql.SQLException;
 public class memberWatched {
     public memberWatched() {
         System.out.println("회원님이 시청하셨던 영화는 다음과 같습니다.");
-        Connection conn = dto.getConn();
+        Connection conn = dTO.getConn();
         String sql = "select * from reservation where id = ?";
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, memberDto.getId());
+            stmt.setString(1, memberDTO.getId());
             ResultSet rs = stmt.executeQuery();
             if (!rs.next()) {
                 System.out.println("시청하신 영화가 없으시군요? 프로그램을 종료하겠습니다.");

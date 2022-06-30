@@ -1,6 +1,6 @@
 package dao.rescan;
 
-import dto.memberDto;
+import dto.memberDTO;
 import service.serviceMenu;
 
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class resCanProcess {
     public resCanProcess() throws SQLException {
-        if(memberDto.getIsin()){
+        if(memberDTO.getIsin()){
             new resShow();
             new resCanSeat();
             new seatCancelUpdate();

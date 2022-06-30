@@ -1,6 +1,6 @@
 package dao.admin;
 
-import dto.dto;
+import dto.dTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class adminMemberDelete extends adminMemberList {
         System.out.println("삭제하실 회원의 아이디를 입력하세요.");
         Scanner sc = new Scanner(System.in);
         String id = sc.nextLine();
-        Connection conn = dto.getConn();
+        Connection conn = dTO.getConn();
         String sql = "delete from member where id = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, id);

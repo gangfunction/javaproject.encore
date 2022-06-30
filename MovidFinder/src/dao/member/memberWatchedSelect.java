@@ -1,7 +1,7 @@
 package dao.member;
 
-import dto.dto;
-import dto.movieDto;
+import dto.dTO;
+import dto.movieDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,16 +13,16 @@ public class memberWatchedSelect {
     public memberWatchedSelect() {
         System.out.println("표시된 순서중 번호를 입력해주세요.");
         Scanner sc = new Scanner(System.in);
-        movieDto.setPointer(sc.nextInt());
+        movieDTO.setPointer(sc.nextInt());
         String sql = "select * from reservation where num = ?";
         try {
-            Connection conn = dto.getConn();
+            Connection conn = dTO.getConn();
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, movieDto.getPointer());
+            stmt.setInt(1, movieDTO.getPointer());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 System.out.println(rs.getString("movie_name"));
-                movieDto.setMovieName(rs.getString("movie_name"));
+                movieDTO.setMovieName(rs.getString("movie_name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

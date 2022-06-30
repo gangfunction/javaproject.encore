@@ -1,6 +1,7 @@
 package dao.login;
 
-import dto.memberDto;
+import dto.dTO;
+import dto.memberDTO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,15 +11,15 @@ public class adCheck {
     adCheck(){
         try{
             String sql= "select admin from member where id = ? and pwd=?";
-            PreparedStatement stmt = dto.dto.getConn().prepareStatement(sql);
-            stmt.setString(1, memberDto.getId() );
-            stmt.setString(2, memberDto.getPwd() );
+            PreparedStatement stmt = dTO.getConn().prepareStatement(sql);
+            stmt.setString(1, memberDTO.getId() );
+            stmt.setString(2, memberDTO.getPwd() );
             ResultSet rs = stmt.executeQuery();
             if(rs.next() && rs.getInt("admin") == 1){
                 System.out.println("관리자입니다.");
-                memberDto.setAdmin(true);
+                memberDTO.setAdmin(true);
             }else{
-                memberDto.setAdmin(false);
+                memberDTO.setAdmin(false);
             }
 
         } catch (SQLException e) {

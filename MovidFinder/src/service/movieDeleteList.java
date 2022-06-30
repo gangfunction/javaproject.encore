@@ -1,6 +1,6 @@
 package service;
 
-import dto.dto;
+import dto.dTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ public class movieDeleteList{
     public movieDeleteList() {
         try {
             PreparedStatement stmt;
-            Connection conn = dto.getConn();
+            Connection conn = dTO.getConn();
             String sql = "truncate movie";
             stmt = conn.prepareStatement(sql);
             stmt.execute();

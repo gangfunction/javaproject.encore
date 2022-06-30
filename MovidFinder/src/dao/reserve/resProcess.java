@@ -1,6 +1,6 @@
 package dao.reserve;
 
-import dto.memberDto;
+import dto.memberDTO;
 import service.*;
 
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class resProcess {
     public resProcess() {
-        if (memberDto.getIsin()) {
+        if (memberDTO.getIsin()) {
             try {
                 new movieList();
                 new seatSelectPosition();

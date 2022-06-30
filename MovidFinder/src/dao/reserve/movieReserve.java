@@ -1,7 +1,7 @@
 package dao.reserve;
 
-import dto.dto;
-import dto.movieDto;
+import dto.dTO;
+import dto.movieDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,24 +11,24 @@ import java.sql.SQLException;
 public class movieReserve {
     public movieReserve() {
         try {
-            Connection conn = dto.getConn();
+            Connection conn = dTO.getConn();
             PreparedStatement stmt = conn.prepareStatement("insert into reservation(movie_name) select movie_name from movie where num =?");
-            stmt.setInt(1, movieDto.getPointer());
+            stmt.setInt(1, movieDTO.getPointer());
             stmt.executeUpdate();
             stmt = conn.prepareStatement("select movie_name from reservation where num=?");
-            stmt.setInt(1, movieDto.getPointer());
+            stmt.setInt(1, movieDTO.getPointer());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                movieDto.setMovieName(rs.getString("movie_name"));
+                movieDTO.setMovieName(rs.getString("movie_name"));
                 }
             new audienceForMovie();
-            movieDto.setAudience();
+            movieDTO.setAudience();
             stmt = conn.prepareStatement("update movie set audience = ? where num = ?");
-            stmt.setInt(1, movieDto.getAudience());
-            stmt.setInt(2, movieDto.getPointer());
+            stmt.setInt(1, movieDTO.getAudience());
+            stmt.setInt(2, movieDTO.getPointer());
             new movieForAudience();
             stmt.executeUpdate();
-            stmt = conn.prepareStatement("select * from box_office where movie_name='" + movieDto.getMovieName() + "'");
+            stmt = conn.prepareStatement("select * from box_office where movie_name='" + movieDTO.getMovieName() + "'");
             rs = stmt.executeQuery();
             System.out.println("영화를 선택하셨습니다. 선택하신 영화의 정보는 다음과 같습니다.");
             if (rs.next())

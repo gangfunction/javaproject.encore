@@ -1,6 +1,6 @@
 package dao.reserve;
 
-import dto.movieDto;
+import dto.movieDTO;
 
 public class seatFactory {
     static final String[] seat = {"1관", "2관", "3관", "4관", "5관", "6관", "7관", "8관", "9관"};
@@ -14,7 +14,7 @@ public class seatFactory {
     static Chair movie8= new Chair(seat[7]);
     static Chair movie9= new Chair(seat[8]);
     public static void seatAction() {
-        switch (movieDto.getPointer()) {
+        switch (movieDTO.getPointer()) {
             case 1 -> {
                 if (movie1 == null) {
                     movie1 = new Chair(seat[0]);

@@ -1,6 +1,6 @@
 package dao.reviewPage;
 
-import dto.dto;
+import dto.dTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ public class reviewUpdate{
         String title = sc.next();
         System.out.println("수정하실 리뷰의 내용을 입력하세요");
         String content = sc.next();
-        Connection conn = dto.getConn();
+        Connection conn = dTO.getConn();
         String sql = "update review set title = ?, content = ? where num = ?";
         PreparedStatement stmt;
         try {

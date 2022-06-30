@@ -1,6 +1,6 @@
 package dao.reserve;
 
-import dto.dto;
+import dto.dTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ public class movieList {
     movieList() {
         try {
             String sql2 = "select movie_name, audience from movie";
-            Connection conn = dto.getConn();
+            Connection conn = dTO.getConn();
             PreparedStatement stmt = conn.prepareStatement(sql2);
             ResultSet rs = stmt.executeQuery();
             int i = 1;
@@ -27,7 +27,7 @@ public class movieList {
         Scanner sc = new Scanner(System.in);
         System.out.println("보실 영화의 번호를 입력하세요");
         int movie_id = sc.nextInt();
-        dto.setPointer(movie_id);
+        dTO.setPointer(movie_id);
 
     }
 }

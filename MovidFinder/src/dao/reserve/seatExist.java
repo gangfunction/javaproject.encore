@@ -1,6 +1,7 @@
 package dao.reserve;
 
-import dto.movieDto;
+import dto.dTO;
+import dto.movieDTO;
 import dto.seatDto;
 import service.serviceMenu;
 
@@ -14,10 +15,10 @@ public class seatExist {
         System.out.println("이미 예약이 되었는지 확인합니다.");
         String sql = "select * from reservation where seatnumber=? and pointer=?";
         try{
-            Connection conn = dto.dto.getConn();
+            Connection conn = dTO.getConn();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, seatDto.getResult());
-            stmt.setInt(2, movieDto.getPointer());
+            stmt.setInt(2, movieDTO.getPointer());
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
                 System.out.println("이미 예약이 되었습니다.");

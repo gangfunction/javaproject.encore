@@ -1,6 +1,6 @@
 package dao.admin;
 
-import dto.dto;
+import dto.dTO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ public class adminMemberEdit {
     protected adminMemberEdit() {
         try{
             String sql = "select * from member ";
-            PreparedStatement stmt = dto.getConn().prepareStatement(sql);
+            PreparedStatement stmt = dTO.getConn().prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
                 System.out.println(rs.getString("id") + " " + rs.getString("pwd") + " " + rs.getString("admin"));
@@ -29,7 +29,7 @@ public class adminMemberEdit {
                     System.out.println("변경할 비밀번호를 입력하세요.");
                     String pwd = sc.nextLine();
                     String sql2 = "update member set pwd=? where id=?";
-                    PreparedStatement stmt2 = dto.getConn().prepareStatement(sql2);
+                    PreparedStatement stmt2 = dTO.getConn().prepareStatement(sql2);
                     stmt2.setString(1, pwd);
                     stmt2.setString(2, id);
                     stmt2.executeUpdate();
@@ -39,7 +39,7 @@ public class adminMemberEdit {
                     System.out.println("변경할 어드민 여부를 입력하세요.");
                     boolean admin = sc.nextBoolean();
                     String sql3 = "update member set admin=? where id=?";
-                    PreparedStatement stmt3 = dto.getConn().prepareStatement(sql3);
+                    PreparedStatement stmt3 = dTO.getConn().prepareStatement(sql3);
                     stmt3.setBoolean(1, admin);
                     stmt3.setString(2, id);
                     stmt3.executeUpdate();

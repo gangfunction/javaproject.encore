@@ -1,6 +1,6 @@
 package dto;
 
-public class movieDto {
+public class movieDTO {
     private static int pointer;
 
     public static String movie_name;
@@ -29,7 +29,7 @@ public class movieDto {
     }
 
     public static void setPointer(int num) {
-        movieDto.pointer = num;
+        movieDTO.pointer = num;
     }
 
 
@@ -40,7 +40,7 @@ public class movieDto {
     }
 
     public static void setMovieName(String movie_name) {
-        movieDto.movie_name = movie_name;
+        movieDTO.movie_name = movie_name;
     }
 
     public static boolean getReserved() {
@@ -48,7 +48,7 @@ public class movieDto {
     }
 
     public static void setReserved(boolean reserved) {
-        movieDto.reserved = reserved;
+        movieDTO.reserved = reserved;
     }
 
 
@@ -74,55 +74,55 @@ public class movieDto {
         return audience1;
     }
     public static void setAudience1(int audience) {
-        movieDto.audience1 = audience;
+        movieDTO.audience1 = audience;
     }
     public static int getAudience2() {
         return audience2;
     }
     public static void setAudience2(int audience) {
-        movieDto.audience2 = audience;
+        movieDTO.audience2 = audience;
     }
     public static int getAudience3() {
         return audience3;
     }
     public static void setAudience3(int audience) {
-        movieDto.audience3 = audience;
+        movieDTO.audience3 = audience;
     }
     public static int getAudience4() {
         return audience4;
     }
     public static void setAudience4(int audience) {
-        movieDto.audience4 = audience;
+        movieDTO.audience4 = audience;
     }
     public static int getAudience5() {
         return audience5;
     }
     public static void setAudience5(int audience) {
-        movieDto.audience5 = audience;
+        movieDTO.audience5 = audience;
     }
     public static int getAudience6() {
         return audience6;
     }
     public static void setAudience6(int audience) {
-        movieDto.audience6 = audience;
+        movieDTO.audience6 = audience;
     }
     public static int getAudience7() {
         return audience7;
     }
     public static void setAudience7(int audience) {
-        movieDto.audience7 = audience;
+        movieDTO.audience7 = audience;
     }
     public static int getAudience8() {
         return audience8;
     }
     public static void setAudience8(int audience) {
-        movieDto.audience8 = audience;
+        movieDTO.audience8 = audience;
     }
     public static int getAudience9() {
         return audience9;
     }
     public static void setAudience9(int audience) {
-        movieDto.audience9 = audience;
+        movieDTO.audience9 = audience;
     }
 
 

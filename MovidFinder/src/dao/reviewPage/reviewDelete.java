@@ -1,6 +1,6 @@
 package dao.reviewPage;
 
-import dto.dto;
+import dto.dTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class reviewDelete{
         Scanner sc = new Scanner(System.in);
         System.out.println("삭제하실 리뷰의 번호를 입력하세요");
         int num = sc.nextInt();
-        Connection conn = dto.getConn();
+        Connection conn = dTO.getConn();
         String sql = "delete from review where num = ?";
         PreparedStatement stmt;
         try {

@@ -1,5 +1,6 @@
 package dao.movie;
 
+import dto.dTO;
 import service.serviceMenu;
 
 import java.sql.Connection;
@@ -16,7 +17,7 @@ public class movieSearch {
         Scanner sc = new Scanner(System.in);
         String name = sc.nextLine();
         try {
-            Connection conn = dto.dto.getConn();
+            Connection conn = dTO.getConn();
             String sql = "select * from box_office where movie_name "+ "like '%"  + name+ "%'";
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs;

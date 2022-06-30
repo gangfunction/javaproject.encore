@@ -1,11 +1,10 @@
 package dao.login;
 
 import dao.admin.adminMain;
-import dto.memberDto;
+import dto.memberDTO;
 import service.serviceMenu;
 
 import java.sql.SQLException;
-import java.util.Scanner;
 
 
 public class loginProcess {
@@ -14,8 +13,8 @@ public class loginProcess {
         new loginInput();
         new adCheck();
         new loginCheck();
-        memberDto.setIsin(true);
-        if (memberDto.getAdmin()) {
+        memberDTO.setIsin(true);
+        if (memberDTO.getAdmin()) {
             System.out.println("관리자 로그인 성공");
             new loginUpdate();
             new loginSave();

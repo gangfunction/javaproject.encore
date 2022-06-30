@@ -1,6 +1,6 @@
 package dao.reserve;
 
-import dto.movieDto;
+import dto.movieDTO;
 import dto.seatDto;
 
 import java.util.Scanner;
@@ -14,7 +14,7 @@ public class seatResult {
         String select = sc.next();
         if (select.equals("y")) {
             //그에 따라 예약수 증가
-            movieDto.setReservation();
+            movieDTO.setReservation();
         } else if (select.equals("n")) {
             //다른 좌석을 선택하는 메소드
             new seatSelectPosition();

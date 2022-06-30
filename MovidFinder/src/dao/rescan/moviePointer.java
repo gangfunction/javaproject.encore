@@ -1,13 +1,13 @@
 package dao.rescan;
 
 import dao.reserve.seatFactory;
-import dto.movieDto;
+import dto.movieDTO;
 
 
 
 public class moviePointer {
     public moviePointer(){
-        switch(movieDto.getPointer()){
+        switch(movieDTO.getPointer()){
             case 1 -> {
                 new seatReplaceCheck(seatFactory.getMovie1());
                 System.out.println("상영관 1 선택 완료");

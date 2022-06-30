@@ -1,7 +1,7 @@
 package dao.login;
 
-import dto.dto;
-import dto.memberDto;
+import dto.dTO;
+import dto.memberDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,13 +11,13 @@ import java.sql.SQLException;
 public class loginSave {
     protected loginSave() throws SQLException {
         String sql = "select id, isin from member where isin=1";
-        Connection conn = dto.getConn();
+        Connection conn = dTO.getConn();
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            if (rs.getString("id").equals(dto.getId())) {
-                memberDto.setId(rs.getString("id"));
-                memberDto.setIsin(rs.getBoolean("isin"));
+            if (rs.getString("id").equals(dTO.getId())) {
+                memberDTO.setId(rs.getString("id"));
+                memberDTO.setIsin(rs.getBoolean("isin"));
             }
         }
     }

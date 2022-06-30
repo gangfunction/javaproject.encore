@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static dto.dto.getConn;
+import static dto.dTO.getConn;
 
 public class adminMovieList {
     protected adminMovieList(){

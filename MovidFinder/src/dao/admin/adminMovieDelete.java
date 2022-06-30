@@ -1,5 +1,7 @@
 package dao.admin;
 
+import dto.dTO;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -13,7 +15,7 @@ public class adminMovieDelete {
         String title = sc.nextLine();
         String sql = "delete from box_office where movie_name like '%" + title + "%'";
         try{
-            Connection conn = dto.dto.getConn();
+            Connection conn = dTO.getConn();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.executeUpdate();
             System.out.println("삭제가 완료되었습니다.");

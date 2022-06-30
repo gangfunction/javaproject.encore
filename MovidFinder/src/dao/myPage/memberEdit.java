@@ -1,6 +1,7 @@
 package dao.myPage;
 
-import dto.memberDto;
+import dto.dTO;
+import dto.memberDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,10 +17,10 @@ public class memberEdit  {
         String pwd = sc.nextLine();
         String sql = "update member set pwd = ?  where id = ?";
         try{
-            Connection conn = dto.dto.getConn();
+            Connection conn = dTO.getConn();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, pwd);
-            stmt.setString(2, memberDto.getId());
+            stmt.setString(2, memberDTO.getId());
             stmt.executeUpdate();}
         catch(SQLException e){
                 throw new RuntimeException(e);

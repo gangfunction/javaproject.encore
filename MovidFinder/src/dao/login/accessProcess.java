@@ -1,14 +1,12 @@
 package dao.login;
 
-import dao.login.loginProcess;
-import dao.login.logoutProcess;
-import dto.memberDto;
+import dto.memberDTO;
 
 import java.sql.SQLException;
 
 public class accessProcess {
     public accessProcess() throws SQLException {
-        if (memberDto.getIsin()) {
+        if (memberDTO.getIsin()) {
             new logoutProcess();
         } else {
             new loginProcess();
